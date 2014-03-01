@@ -1028,6 +1028,7 @@ function get_row_layout()
 *  @param	array	$atts: an array holding the shortcode options
 *			string	+ field: the field name
 *			mixed	+ post_id: the post_id to load from
+*			boolean	+ format_value: whether or not to format the value
 *
 *  @return	string	$value: the value found by get_field
 */
@@ -1038,6 +1039,7 @@ function acf_shortcode( $atts )
 	extract( shortcode_atts( array(
 		'field' => "",
 		'post_id' => false,
+		'format_value' => false,
 	), $atts ) );
 	
 	
@@ -1049,7 +1051,7 @@ function acf_shortcode( $atts )
 	
 	
 	// get value and return it
-	$value = get_field( $field, $post_id );
+	$value = get_field( $field, $post_id, $format_value );
 	
 	
 	if( is_array($value) )
